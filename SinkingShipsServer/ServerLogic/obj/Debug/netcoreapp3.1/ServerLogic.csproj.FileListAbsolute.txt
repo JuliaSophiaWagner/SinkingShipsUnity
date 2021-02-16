@@ -1,0 +1,12 @@
+D:\Jules\Dokumente\FH\5. Semester\SinkingShips\SinkingShipsServer\ServerLogic\bin\Debug\netcoreapp3.1\ServerLogic.deps.json
+D:\Jules\Dokumente\FH\5. Semester\SinkingShips\SinkingShipsServer\ServerLogic\bin\Debug\netcoreapp3.1\ServerLogic.dll
+D:\Jules\Dokumente\FH\5. Semester\SinkingShips\SinkingShipsServer\ServerLogic\bin\Debug\netcoreapp3.1\ServerLogic.pdb
+D:\Jules\Dokumente\FH\5. Semester\SinkingShips\SinkingShipsServer\ServerLogic\obj\Debug\netcoreapp3.1\ServerLogic.csprojAssemblyReference.cache
+D:\Jules\Dokumente\FH\5. Semester\SinkingShips\SinkingShipsServer\ServerLogic\obj\Debug\netcoreapp3.1\ServerLogic.AssemblyInfoInputs.cache
+D:\Jules\Dokumente\FH\5. Semester\SinkingShips\SinkingShipsServer\ServerLogic\obj\Debug\netcoreapp3.1\ServerLogic.AssemblyInfo.cs
+D:\Jules\Dokumente\FH\5. Semester\SinkingShips\SinkingShipsServer\ServerLogic\obj\Debug\netcoreapp3.1\ServerLogic.csproj.CoreCompileInputs.cache
+D:\Jules\Dokumente\FH\5. Semester\SinkingShips\SinkingShipsServer\ServerLogic\obj\Debug\netcoreapp3.1\ServerLogic.dll
+D:\Jules\Dokumente\FH\5. Semester\SinkingShips\SinkingShipsServer\ServerLogic\obj\Debug\netcoreapp3.1\ServerLogic.pdb
+D:\Jules\Dokumente\FH\5. Semester\SinkingShips\SinkingShipsServer\ServerLogic\bin\Debug\netcoreapp3.1\SinkingShipsGameInterfaces.dll
+D:\Jules\Dokumente\FH\5. Semester\SinkingShips\SinkingShipsServer\ServerLogic\bin\Debug\netcoreapp3.1\SinkingShipsGameInterfaces.pdb
+D:\Jules\Dokumente\FH\5. Semester\SinkingShips\SinkingShipsServer\ServerLogic\obj\Debug\netcoreapp3.1\ServerLogic.csproj.CopyComplete

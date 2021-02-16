@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="GameParts\GridElement.cs~RF259e4f.TMP" />
+    <None Remove="GameParts\PlayerShot.cs~RF2d13fa.TMP" />
+    <None Remove="GameParts\PlayerShot.cs~RF2ecc49.TMP" />
+    <None Remove="GameParts\PlayerShot.cs~RF3483d9.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SinkingShipsGameInterfaces\SinkingShipsGameInterfaces.csproj" />
+  </ItemGroup>
+
+</Project>

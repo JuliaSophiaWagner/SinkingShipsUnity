@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "ServerLogic/1.0.0": {
+        "dependencies": {
+          "SinkingShipsGameInterfaces": "1.0.0"
+        },
+        "runtime": {
+          "ServerLogic.dll": {}
+        }
+      },
+      "SinkingShipsGameInterfaces/1.0.0": {
+        "runtime": {
+          "SinkingShipsGameInterfaces.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ServerLogic/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SinkingShipsGameInterfaces/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

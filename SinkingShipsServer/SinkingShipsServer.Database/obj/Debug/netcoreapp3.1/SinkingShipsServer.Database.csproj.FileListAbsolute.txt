@@ -1,0 +1,12 @@
+D:\Jules\Dokumente\FH\5. Semester\SinkingShips\SinkingShipsServer\SinkingShipsServer.Database\bin\Debug\netcoreapp3.1\SinkingShipsServer.Database.deps.json
+D:\Jules\Dokumente\FH\5. Semester\SinkingShips\SinkingShipsServer\SinkingShipsServer.Database\bin\Debug\netcoreapp3.1\SinkingShipsServer.Database.runtimeconfig.json
+D:\Jules\Dokumente\FH\5. Semester\SinkingShips\SinkingShipsServer\SinkingShipsServer.Database\bin\Debug\netcoreapp3.1\SinkingShipsServer.Database.runtimeconfig.dev.json
+D:\Jules\Dokumente\FH\5. Semester\SinkingShips\SinkingShipsServer\SinkingShipsServer.Database\bin\Debug\netcoreapp3.1\SinkingShipsServer.Database.dll
+D:\Jules\Dokumente\FH\5. Semester\SinkingShips\SinkingShipsServer\SinkingShipsServer.Database\bin\Debug\netcoreapp3.1\SinkingShipsServer.Database.pdb
+D:\Jules\Dokumente\FH\5. Semester\SinkingShips\SinkingShipsServer\SinkingShipsServer.Database\obj\Debug\netcoreapp3.1\SinkingShipsServer.Database.csprojAssemblyReference.cache
+D:\Jules\Dokumente\FH\5. Semester\SinkingShips\SinkingShipsServer\SinkingShipsServer.Database\obj\Debug\netcoreapp3.1\SinkingShipsServer.Database.AssemblyInfoInputs.cache
+D:\Jules\Dokumente\FH\5. Semester\SinkingShips\SinkingShipsServer\SinkingShipsServer.Database\obj\Debug\netcoreapp3.1\SinkingShipsServer.Database.AssemblyInfo.cs
+D:\Jules\Dokumente\FH\5. Semester\SinkingShips\SinkingShipsServer\SinkingShipsServer.Database\obj\Debug\netcoreapp3.1\SinkingShipsServer.Database.csproj.CoreCompileInputs.cache
+D:\Jules\Dokumente\FH\5. Semester\SinkingShips\SinkingShipsServer\SinkingShipsServer.Database\obj\Debug\netcoreapp3.1\SinkingShipsServer.Database.dll
+D:\Jules\Dokumente\FH\5. Semester\SinkingShips\SinkingShipsServer\SinkingShipsServer.Database\obj\Debug\netcoreapp3.1\SinkingShipsServer.Database.pdb
+D:\Jules\Dokumente\FH\5. Semester\SinkingShips\SinkingShipsServer\SinkingShipsServer.Database\obj\Debug\netcoreapp3.1\SinkingShipsServer.Database.genruntimeconfig.cache

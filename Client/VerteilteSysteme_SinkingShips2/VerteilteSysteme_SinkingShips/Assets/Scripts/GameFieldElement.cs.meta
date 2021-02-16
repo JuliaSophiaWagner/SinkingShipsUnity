@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 669e8462c0c39ab4385c31eddc7e3327
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - explosion: {fileID: 6023310175051082554, guid: 3b380ea285aa01b4ea3080b73f846e2a, type: 3}
+  - fire: {fileID: 2774238643970475413, guid: 4786263ee57751648bebd2b63849eaed, type: 3}
+  - water: {fileID: 6364560069573450222, guid: 63b5efe478d30024eb00a5f0b2118b6a, type: 3}
+  - shipHitTexture: {fileID: 2100000, guid: 94b3614c9a756f24d814b44e6c1e6501, type: 2}
+  - explosionInstance: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

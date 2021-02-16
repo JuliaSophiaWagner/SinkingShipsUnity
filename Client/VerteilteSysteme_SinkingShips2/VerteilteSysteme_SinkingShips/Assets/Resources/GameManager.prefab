@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1699072937824045175
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1699072937824045173}
+  - component: {fileID: 1699072937824045172}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1699072937824045173
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1699072937824045175}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.4743341, y: -0.13804911, z: -93.6402}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1699072937824045172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1699072937824045175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38d7c61bc6117b44abf33a71a6166a18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shipHitTexture: {fileID: 0}
+  quitGameObject: {fileID: 3980130837533120329, guid: 86b65f5e6984a7a49a563527eb3f9c53, type: 3}
+  enemyGrid: {fileID: 7865852586343779809, guid: 66e3d4e29bd5b19499fba417aa651b8f, type: 3}
+  game: {fileID: 0}
+  login: {fileID: 0}
+  register: {fileID: 0}
+  registerErrorMessage: {fileID: 0}
+  loginErrorMessage: {fileID: 0}
+  mulitplayerListHolder: {fileID: 0}
+  gameRequestListHolder: {fileID: 0}
+  gameListHolder: {fileID: 0}
+  gameMessage: {fileID: 3921490733482328033, guid: e47d1fff9363496439f28c58790a14e0, type: 3}
+  points: {fileID: 7849029283826518036, guid: 73650761e2e2e51478e15aed450ad7cf, type: 3}
