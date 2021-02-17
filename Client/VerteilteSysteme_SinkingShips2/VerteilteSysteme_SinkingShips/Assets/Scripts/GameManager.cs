@@ -280,7 +280,7 @@ public class GameManager : MonoBehaviour
             response = await client.GetAsync("RankingWon");
             response.EnsureSuccessStatusCode();
             content = await response.Content.ReadAsStringAsync();
-            rankingWonListHolder.GetComponent<ItemDetails>().InstantiateRanking(JsonConvert.DeserializeObject<List<PlayerStats>>(content));
+            rankingWonListHolder.GetComponent<ItemDetails>().InstantiateRankingWon(JsonConvert.DeserializeObject<List<PlayerStats>>(content));
         }
         catch
         {
