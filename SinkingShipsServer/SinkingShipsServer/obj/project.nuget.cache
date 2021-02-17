@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "shqjlq+KStnzeL6+VmLIJK8TCxqvdPUy+uBiLFjjEAD5fceMpSmTxScmepU8xEEpsEcUBL6cDH6zDsNX/Kv81A==",
+  "dgSpecHash": "10+QeKVgB4gnMf9VT5arWw528pZK6zrPjt0rQ6Z+uluOXr68/a2CxUTaqBHHMLvsRQ36zfhBYR4ziAUsqdfyuQ==",
   "success": true,
-  "projectFilePath": "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips\\SinkingShipsServer\\SinkingShipsServer\\SinkingShipsServer.csproj",
+  "projectFilePath": "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips2\\SinkingShipsUnity\\SinkingShipsServer\\SinkingShipsServer\\SinkingShipsServer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Julia\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Julia\\.nuget\\packages\\microsoft.aspnetcore.authorization\\1.0.3\\microsoft.aspnetcore.authorization.1.0.3.nupkg.sha512",

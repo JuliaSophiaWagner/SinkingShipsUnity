@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips\\SinkingShipsServer\\SinkingShipsServer\\SinkingShipsServer.csproj": {}
+    "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips2\\SinkingShipsUnity\\SinkingShipsServer\\SinkingShipsServer\\SinkingShipsServer.csproj": {}
   },
   "projects": {
-    "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips\\SinkingShipsServer\\ServerLogic\\ServerLogic.csproj": {
+    "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips2\\SinkingShipsUnity\\SinkingShipsServer\\ServerLogic\\ServerLogic.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips\\SinkingShipsServer\\ServerLogic\\ServerLogic.csproj",
+        "projectUniqueName": "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips2\\SinkingShipsUnity\\SinkingShipsServer\\ServerLogic\\ServerLogic.csproj",
         "projectName": "ServerLogic",
-        "projectPath": "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips\\SinkingShipsServer\\ServerLogic\\ServerLogic.csproj",
+        "projectPath": "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips2\\SinkingShipsUnity\\SinkingShipsServer\\ServerLogic\\ServerLogic.csproj",
         "packagesPath": "C:\\Users\\Julia\\.nuget\\packages\\",
-        "outputPath": "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips\\SinkingShipsServer\\ServerLogic\\obj\\",
+        "outputPath": "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips2\\SinkingShipsUnity\\SinkingShipsServer\\ServerLogic\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Julia\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips\\SinkingShipsServer\\SinkingShipsGameInterfaces\\SinkingShipsGameInterfaces.csproj": {
-                "projectPath": "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips\\SinkingShipsServer\\SinkingShipsGameInterfaces\\SinkingShipsGameInterfaces.csproj"
+              "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips2\\SinkingShipsUnity\\SinkingShipsServer\\SinkingShipsGameInterfaces\\SinkingShipsGameInterfaces.csproj": {
+                "projectPath": "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips2\\SinkingShipsUnity\\SinkingShipsServer\\SinkingShipsGameInterfaces\\SinkingShipsGameInterfaces.csproj"
               }
             }
           }
@@ -62,14 +62,14 @@
         }
       }
     },
-    "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips\\SinkingShipsServer\\SinkingShipsGameInterfaces\\SinkingShipsGameInterfaces.csproj": {
+    "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips2\\SinkingShipsUnity\\SinkingShipsServer\\SinkingShipsGameInterfaces\\SinkingShipsGameInterfaces.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips\\SinkingShipsServer\\SinkingShipsGameInterfaces\\SinkingShipsGameInterfaces.csproj",
+        "projectUniqueName": "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips2\\SinkingShipsUnity\\SinkingShipsServer\\SinkingShipsGameInterfaces\\SinkingShipsGameInterfaces.csproj",
         "projectName": "SinkingShipsGameInterfaces",
-        "projectPath": "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips\\SinkingShipsServer\\SinkingShipsGameInterfaces\\SinkingShipsGameInterfaces.csproj",
+        "projectPath": "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips2\\SinkingShipsUnity\\SinkingShipsServer\\SinkingShipsGameInterfaces\\SinkingShipsGameInterfaces.csproj",
         "packagesPath": "C:\\Users\\Julia\\.nuget\\packages\\",
-        "outputPath": "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips\\SinkingShipsServer\\SinkingShipsGameInterfaces\\obj\\",
+        "outputPath": "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips2\\SinkingShipsUnity\\SinkingShipsServer\\SinkingShipsGameInterfaces\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Julia\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -116,14 +116,14 @@
         }
       }
     },
-    "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips\\SinkingShipsServer\\SinkingShipsServer.Database\\SinkingShipsServer.Database.csproj": {
+    "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips2\\SinkingShipsUnity\\SinkingShipsServer\\SinkingShipsServer.Database\\SinkingShipsServer.Database.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips\\SinkingShipsServer\\SinkingShipsServer.Database\\SinkingShipsServer.Database.csproj",
+        "projectUniqueName": "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips2\\SinkingShipsUnity\\SinkingShipsServer\\SinkingShipsServer.Database\\SinkingShipsServer.Database.csproj",
         "projectName": "SinkingShipsServer.Database",
-        "projectPath": "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips\\SinkingShipsServer\\SinkingShipsServer.Database\\SinkingShipsServer.Database.csproj",
+        "projectPath": "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips2\\SinkingShipsUnity\\SinkingShipsServer\\SinkingShipsServer.Database\\SinkingShipsServer.Database.csproj",
         "packagesPath": "C:\\Users\\Julia\\.nuget\\packages\\",
-        "outputPath": "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips\\SinkingShipsServer\\SinkingShipsServer.Database\\obj\\",
+        "outputPath": "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips2\\SinkingShipsUnity\\SinkingShipsServer\\SinkingShipsServer.Database\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Julia\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -200,14 +200,14 @@
         }
       }
     },
-    "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips\\SinkingShipsServer\\SinkingShipsServer\\SinkingShipsServer.csproj": {
+    "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips2\\SinkingShipsUnity\\SinkingShipsServer\\SinkingShipsServer\\SinkingShipsServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips\\SinkingShipsServer\\SinkingShipsServer\\SinkingShipsServer.csproj",
+        "projectUniqueName": "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips2\\SinkingShipsUnity\\SinkingShipsServer\\SinkingShipsServer\\SinkingShipsServer.csproj",
         "projectName": "SinkingShipsServer",
-        "projectPath": "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips\\SinkingShipsServer\\SinkingShipsServer\\SinkingShipsServer.csproj",
+        "projectPath": "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips2\\SinkingShipsUnity\\SinkingShipsServer\\SinkingShipsServer\\SinkingShipsServer.csproj",
         "packagesPath": "C:\\Users\\Julia\\.nuget\\packages\\",
-        "outputPath": "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips\\SinkingShipsServer\\SinkingShipsServer\\obj\\",
+        "outputPath": "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips2\\SinkingShipsUnity\\SinkingShipsServer\\SinkingShipsServer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Julia\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -224,11 +224,11 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips\\SinkingShipsServer\\ServerLogic\\ServerLogic.csproj": {
-                "projectPath": "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips\\SinkingShipsServer\\ServerLogic\\ServerLogic.csproj"
+              "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips2\\SinkingShipsUnity\\SinkingShipsServer\\ServerLogic\\ServerLogic.csproj": {
+                "projectPath": "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips2\\SinkingShipsUnity\\SinkingShipsServer\\ServerLogic\\ServerLogic.csproj"
               },
-              "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips\\SinkingShipsServer\\SinkingShipsServer.Database\\SinkingShipsServer.Database.csproj": {
-                "projectPath": "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips\\SinkingShipsServer\\SinkingShipsServer.Database\\SinkingShipsServer.Database.csproj"
+              "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips2\\SinkingShipsUnity\\SinkingShipsServer\\SinkingShipsServer.Database\\SinkingShipsServer.Database.csproj": {
+                "projectPath": "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips2\\SinkingShipsUnity\\SinkingShipsServer\\SinkingShipsServer.Database\\SinkingShipsServer.Database.csproj"
               }
             }
           }

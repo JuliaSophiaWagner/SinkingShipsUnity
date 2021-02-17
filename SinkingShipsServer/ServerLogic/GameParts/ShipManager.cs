@@ -90,22 +90,6 @@ namespace ServerLogic.GameParts
                 item.Fields.Clear();
             }
         }
-        private bool CheckGridForAnotherShip(Ship ship)
-        {
-            foreach (var item in this.Ships)
-            {
-                if (item == null)
-                {
-                    return false;
-                }
-                else if (item != ship && item.Fields.Count != 0 && this.CreateTempFields(item).Intersect(ship.Fields).Any())
-                {
-                    return false;
-                }                
-            }
-
-            return true;
-        }
 
         private bool CheckPosition(Ship ship)
         {
@@ -161,7 +145,7 @@ namespace ServerLogic.GameParts
             }
         }
 
-        private List<GridElement> CreateTempFields(Ship ship)
+        public List<GridElement> CreateTempFields(Ship ship)
         {
             List<GridElement> fieldTemp = new List<GridElement>();
 

@@ -164,12 +164,18 @@ namespace ServerLogic
 
                 while (field.HasBeenShot)
                 {
+                    this.botPlayer.ShotsMade.Remove(this.botPlayer.ShotsMade.Last());
+                    valid = this.ExecutePlayerShot(this.botPlayer.ExecuteShot(), this.botPlayer.PlayerID);
                     field = enemyPlayer.Field.Fields.Where(field => field.XCoordinate == this.botPlayer.ShotsMade.Last().XCoordinate && field.YCoordinate == this.botPlayer.ShotsMade.Last().YCoordinate).FirstOrDefault();
-                    this.ExecutePlayerShot(this.botPlayer.ExecuteShot(), this.botPlayer.PlayerID);
                 }
 
-                this.botPlayer.ShotsMade.Remove(this.botPlayer.ShotsMade.Last());
+                if (!valid)
+                {
+                    this.botPlayer.ShotsMade.Remove(this.botPlayer.ShotsMade.Last());
+                }
             }
+
+            this.botPlayer.ShotsMade.Last().IsShip = this.lastShots.Last().IsShip;
         }
 
         private bool Shot(PlayerShot shot, GamePlayer player)
@@ -200,7 +206,7 @@ namespace ServerLogic
                 field.IsShip = true;
                 this.GameOver = this.CheckGameOver(player, enemyPlayer);
 
-                if (this.IsBot && enemyPlayer == this.players.Last())
+                if (this.IsBot && player == this.players.Last())
                 {
                     botPlayer.ShipSunk = ship.ShipHasSunk;
                 }

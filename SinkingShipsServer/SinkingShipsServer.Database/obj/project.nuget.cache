@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4G4UmrnSa1tJuX9m8icKmh4g7VB/BvhdM/QHyxqpWvgzNVT8Bn2oe83r7lpuxMThF0Jam4lGS7Gdi9S/6Mf/dw==",
+  "dgSpecHash": "tcVAsIVOIl0roDFiP00uDz1FHgyD800YgRmp9gLHkjOUSgo/SxBWMf9Dbw4JgOulM3XrY3lB6GqMRgMgXXRaMA==",
   "success": true,
-  "projectFilePath": "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips\\SinkingShipsServer\\SinkingShipsServer.Database\\SinkingShipsServer.Database.csproj",
+  "projectFilePath": "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips2\\SinkingShipsUnity\\SinkingShipsServer\\SinkingShipsServer.Database\\SinkingShipsServer.Database.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Julia\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Julia\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

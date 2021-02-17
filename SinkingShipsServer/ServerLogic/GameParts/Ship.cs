@@ -15,7 +15,7 @@ namespace ServerLogic.GameParts
         }
         public Ship()
         {
-
+            this.Fields = new List<GridElement>();
         }
         public int Size { get; }
 

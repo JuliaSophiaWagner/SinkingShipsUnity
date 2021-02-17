@@ -8,12 +8,18 @@ namespace ServerLogic.GameParts
 {
     public class BotPlayer
     {
+        private List<Ship> shotShips;
+        private bool firstTimeShot;
+        private bool triedLeft;
+        private bool triedRight;
+        private bool triedVertical;
+
         public BotPlayer(string playerID)
         {
+            this.firstTimeShot = false;
+            this.shotShips = new List<Ship>();
             this.ShotsMade = new List<PlayerShot>();
             this.PlayerID = playerID;
-            //this.worker = new Thread(new ThreadStart(MakeShot));
-            //this.worker.Start();
         }
 
         public List<PlayerShot> ShotsMade
@@ -91,9 +97,17 @@ namespace ServerLogic.GameParts
 
         public PlayerShot ExecuteShot()
         {
-            this.CalculateShot();
             Thread.Sleep(3000);
+            this.CalculateShot();
             return this.ShotsMade.Last();
+         }
+
+        private void ResetConditions()
+        {
+            this.triedLeft = false;
+            this.triedRight = false;
+            this.triedVertical = false;
+            this.firstTimeShot = false;
         }
 
         private void CalculateShot()
@@ -104,13 +118,33 @@ namespace ServerLogic.GameParts
                 return;
             }
 
-            if (this.ShotsMade.Last().IsShip && !ShipSunk)
+            if (this.ShotsMade.Last().IsShip && !ShipSunk && !this.firstTimeShot)
             {
+                Ship shipTemp = new Ship();
+                shipTemp.Fields.Add(new GridElement(this.ShotsMade.Last().XCoordinate, this.ShotsMade.Last().YCoordinate, true));
+                this.shotShips.Add(shipTemp);
+                this.ShotsMade.Add(TryNewShotNearShip());
+                this.firstTimeShot = true;
+                return;
+            }
+            else if (!ShipSunk && this.firstTimeShot)
+            {
+                if (this.ShotsMade.Last().IsShip)
+                {
+                    this.shotShips.Last().Fields.Add(new GridElement(this.ShotsMade.Last().XCoordinate, this.ShotsMade.Last().YCoordinate, true));
+                }
+
                 this.ShotsMade.Add(TryNewShotNearShip());
                 return;
             }
+            else if (this.ShotsMade.Last().IsShip && ShipSunk)
+            {
+                this.shotShips.Last().Fields.Add(new GridElement(this.ShotsMade.Last().XCoordinate, this.ShotsMade.Last().YCoordinate, true));
+                this.shotShips.Last().Fields = new ShipManager().CreateTempFields(this.shotShips.Last());
+            }
 
             ShipSunk = false;
+            ResetConditions();
             this.ShotsMade.Add(this.GetRandomShot());
         }
 
@@ -132,41 +166,119 @@ namespace ServerLogic.GameParts
             return shotTemp;
         }
 
+        private bool CheckIfVerticalShip()
+        {
+            if (CheckIfFirstShot())
+            {
+                return false;
+            }
+
+            if (this.shotShips.Last().Fields.First().XCoordinate == this.shotShips.Last().Fields.First().XCoordinate)
+            {
+                return false;
+            }
+
+            this.shotShips.Last().Rotated = true;
+            return true;
+        }
+
+        private bool CheckIfFirstShot()
+        {
+            if (this.shotShips.Last().Fields.Count < 2)
+            {
+                return true;
+            }
+
+            if (this.shotShips.Last().Fields.Count == 2 && !this.ShotsMade.Last().IsShip)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         private PlayerShot TryNewShotNearShip()
         {
-            int x = this.ShotsMade.Last().XCoordinate - 1;
-            int y = this.ShotsMade.Last().YCoordinate;
-            PlayerShot shotTemp = new PlayerShot(this.PlayerID, this.GameID, x, y, false);
-
-            if (CheckIfMoveExist(x, y))
-            {
-                x = this.ShotsMade.Last().XCoordinate + 1;
-            }
-
-            if (CheckIfMoveExist(x, y))
+            int x, y;
+            if (this.ShotsMade.Last().IsShip)
             {
                 x = this.ShotsMade.Last().XCoordinate;
-                y = this.ShotsMade.Last().YCoordinate - 1;
+                y = this.ShotsMade.Last().YCoordinate;
+            }
+            else
+            {
+                x = this.shotShips.Last().Fields.Last().XCoordinate;
+                y = this.shotShips.Last().Fields.Last().YCoordinate;
             }
 
-            if (CheckIfMoveExist(x, y))
+            PlayerShot shotTemp = new PlayerShot(this.PlayerID, this.GameID, x, y, false);
+
+            if (CheckIfVerticalShip() || CheckIfFirstShot())
             {
-                y = this.ShotsMade.Last().YCoordinate + 1;
+                x = x - 1;
+                if (!CheckIfMoveExist(x, y) && this.ShotsMade.Last().IsShip)
+                {
+                    triedLeft = true;
+                    shotTemp.XCoordinate = x;
+                    return shotTemp;
+                }
+
+                if (triedLeft)
+                {
+                    x = this.shotShips.Last().Fields.Last().XCoordinate + 1;
+                    triedRight = true;
+                }
+
+                if (CheckIfMoveExist(x, y) && triedLeft && triedRight)
+                {
+                    this.triedVertical = true;
+                }
             }
 
-            if (CheckIfMoveExist(x, y))
+            if (this.triedVertical || !CheckIfVerticalShip())
             {
-                return GetRandomShot();
+                if (this.ShotsMade.Last().IsShip)
+                {
+                    x = this.ShotsMade.Last().XCoordinate;
+                    y = this.ShotsMade.Last().YCoordinate - 1;
+                }
+                else
+                {
+                    x = this.shotShips.Last().Fields.Last().XCoordinate;
+                    y = this.shotShips.Last().Fields.Last().YCoordinate - 1;
+                }
+
+                if (!CheckIfMoveExist(x, y))
+                {
+                    shotTemp.YCoordinate = y;
+                    return shotTemp;
+                }
+
+                if (CheckIfMoveExist(x, y) || !this.ShotsMade.Last().IsShip)
+                {
+                    y = this.shotShips.Last().Fields.First().YCoordinate + 1;
+                }
+
+                //if (CheckIfMoveExist(x, y))
+                //{
+                //    y = this.shotShips.Last().Fields.First().YCoordinate + 1;
+                //}
             }
 
             shotTemp.XCoordinate = x;
             shotTemp.YCoordinate = y;
+
+            if (CheckIfMoveExist(x, y))
+            {
+                shotTemp = GetRandomShot();
+            }
+
             return shotTemp;
         }
 
         private bool CheckIfMoveExist(int x, int y)
         {
-            return (x < 0 || y < 0 || x > 9 || y > 9) || this.ShotsMade.Any(s => s.XCoordinate == x && s.YCoordinate == y);
+            return (x < 0 || y < 0 || x > 9 || y > 9) || this.ShotsMade.Any(s => s.XCoordinate == x && s.YCoordinate == y) || this.shotShips.Any(s => s.Fields.Any(f => f.XCoordinate == x && f.YCoordinate == y));
         }
     }
 }

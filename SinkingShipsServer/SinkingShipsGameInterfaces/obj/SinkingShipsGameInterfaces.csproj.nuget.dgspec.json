@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips\\SinkingShipsServer\\SinkingShipsGameInterfaces\\SinkingShipsGameInterfaces.csproj": {}
+    "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips2\\SinkingShipsUnity\\SinkingShipsServer\\SinkingShipsGameInterfaces\\SinkingShipsGameInterfaces.csproj": {}
   },
   "projects": {
-    "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips\\SinkingShipsServer\\SinkingShipsGameInterfaces\\SinkingShipsGameInterfaces.csproj": {
+    "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips2\\SinkingShipsUnity\\SinkingShipsServer\\SinkingShipsGameInterfaces\\SinkingShipsGameInterfaces.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips\\SinkingShipsServer\\SinkingShipsGameInterfaces\\SinkingShipsGameInterfaces.csproj",
+        "projectUniqueName": "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips2\\SinkingShipsUnity\\SinkingShipsServer\\SinkingShipsGameInterfaces\\SinkingShipsGameInterfaces.csproj",
         "projectName": "SinkingShipsGameInterfaces",
-        "projectPath": "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips\\SinkingShipsServer\\SinkingShipsGameInterfaces\\SinkingShipsGameInterfaces.csproj",
+        "projectPath": "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips2\\SinkingShipsUnity\\SinkingShipsServer\\SinkingShipsGameInterfaces\\SinkingShipsGameInterfaces.csproj",
         "packagesPath": "C:\\Users\\Julia\\.nuget\\packages\\",
-        "outputPath": "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips\\SinkingShipsServer\\SinkingShipsGameInterfaces\\obj\\",
+        "outputPath": "D:\\Jules\\Dokumente\\FH\\5. Semester\\SinkingShips2\\SinkingShipsUnity\\SinkingShipsServer\\SinkingShipsGameInterfaces\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Julia\\AppData\\Roaming\\NuGet\\NuGet.Config",
