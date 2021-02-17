@@ -22,8 +22,11 @@ public class UserManager : MonoBehaviour
     {
         if (username != null && password != null)
         {
-            playerLoginCredentials.Name = username.GetComponent<TextMeshProUGUI>().text;
-            playerLoginCredentials.Password = password.GetComponent<TMP_InputField>().text;
+            string name = username.GetComponent<TextMeshProUGUI>().text;
+            string passwort = password.GetComponent<TMP_InputField>().text;
+
+            playerLoginCredentials.Name = name.ToUpper();
+            playerLoginCredentials.Password = this.DecryptPasswort(passwort);
         }
     }
 
@@ -31,15 +34,20 @@ public class UserManager : MonoBehaviour
     {
         if (username != null && password != null)
         {
-            playerRegisterCredentials.Name = username.GetComponent<TextMeshProUGUI>().text;
-            playerRegisterCredentials.Password = password.GetComponent<TMP_InputField>().text;
+            string name = username.GetComponent<TextMeshProUGUI>().text;
+            string pw = password.GetComponent<TMP_InputField>().text;
 
-            /*
-             * byte[] data = System.Text.Encoding.ASCII.GetBytes(inputString);
-data = new System.Security.Cryptography.SHA256Managed().ComputeHash(data);
-String hash = System.Text.Encoding.ASCII.GetString(data);
-             */
+            playerRegisterCredentials.Name = name.ToUpper();
+            playerRegisterCredentials.Password = this.DecryptPasswort(pw);
         }
+    }
+
+    private string DecryptPasswort(string pw)
+    {
+        byte[] data = System.Text.Encoding.ASCII.GetBytes(pw);
+        data = new System.Security.Cryptography.SHA256Managed().ComputeHash(data);
+
+        return System.Text.Encoding.ASCII.GetString(data);
     }
 
     // Update is called once per frame
