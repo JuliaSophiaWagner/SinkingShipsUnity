@@ -10,8 +10,6 @@ namespace SinkingShipsServer.Database
         {
         }
 
-        public DbSet<PlayerModel> SinkingShipsPlayers { get; set; }
-
-        public DbSet<GameInstances> GameInstances { get; set; }
+        public DbSet<ClientData> AllRegisteredPlayers { get; set; }
     }
 }

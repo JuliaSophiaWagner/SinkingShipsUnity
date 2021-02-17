@@ -37,7 +37,7 @@ namespace SinkingShipsServer.Database
                     }
                 };
 
-                db.SinkingShipsPlayers.AddRange(players);
+               // db.SinkingShipsPlayers.AddRange(players);
                 db.SaveChanges();
             
         }
