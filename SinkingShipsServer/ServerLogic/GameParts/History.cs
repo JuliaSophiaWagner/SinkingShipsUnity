@@ -11,14 +11,17 @@ namespace ServerLogic.GameParts
 
         }
 
-        public History(string name, int firstPlayerPoints, int secondPlayerPoints)
+        public History(string name, int firstPlayerPoints, int secondPlayerPoints, string gameID)
         {
             this.Name = name;
             this.FirstPlayerPoints = firstPlayerPoints;
             this.SecondPlayerPoints = secondPlayerPoints;
+            this.GameID = gameID;
         }
 
         public string Name { get; set; }
+
+        public string GameID { get; set; }
 
         public int FirstPlayerPoints { get; set; }
 

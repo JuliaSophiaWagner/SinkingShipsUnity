@@ -29,11 +29,6 @@ namespace SinkingShipsServer.Services
             return this.manager.LoggedPlayers;
         }
 
-        public bool GetPlayerbyId(string idClient)
-        {
-            throw new NotImplementedException();
-        }
-
         public bool LoginPlayer(PlayerCredentials player, string token)
         {
             return this.manager.LoginPlayer(player, token);
@@ -51,27 +46,21 @@ namespace SinkingShipsServer.Services
             return playermodel;
         }
 
-        public void PauseGame(PlayerCredentials credentials, string token)
+        public bool SetGameField(GameField gameField, string token)
         {
-            this.manager.PauseGame(credentials, token); 
-        }
-
-        public void SetGameField(GameField gameField, string token)
-        {
-            this.manager.SetGameField(gameField, this.GetClientIDByToken(token));
+            string playerID = this.GetClientIDByToken(token);
+            this.manager.SetGameField(gameField, playerID);
+            return playerID == null || playerID == string.Empty;
         }
 
         public GameData GetGameData(string token, GameInformation info)
         {
-            // find player anhand des token
             return this.manager.GetGameData(this.GetClientIDByToken(token), info);
         }
 
         public bool SetGameShot(PlayerShot shot, string token)
         {
             bool valid = this.manager.SetGameShot(shot, this.GetClientIDByToken(token));
-            // save manager players and field to db
-            // rep.SaveGame()
             return valid;
         }
 
@@ -85,15 +74,9 @@ namespace SinkingShipsServer.Services
             return this.manager.StartBotGame(this.GetClientIDByToken(token));
         }
 
-        public bool RequestGameSpecificUser(Player player, string token)
-        {
-            throw new NotImplementedException();
-        }
 
         public List<GameInformation> GetAllRunningGames(string token)
         {
-            // TODO: token checken !!!         
-
             return this.manager.GetAllRunningGames(this.GetClientIDByToken(token));
         }
 
@@ -113,9 +96,12 @@ namespace SinkingShipsServer.Services
             return this.manager.GetAllGameRequests(this.GetClientIDByToken(token));
         }
 
-        public void SaveGameRequest(string token, Player clientToAsk)
+        public bool SaveGameRequest(string token, Player clientToAsk)
         {
+            var player = this.GetClientIDByToken(token);
             this.manager.SaveGameRequest(this.GetClientIDByToken(token), clientToAsk);
+
+            return player != null;
         }
 
         public GameField GetRunningGameData(string token, string gameID)
@@ -138,26 +124,39 @@ namespace SinkingShipsServer.Services
 
         public GameInformation GetGameInfo(string gameID, string token)
         {
-            return this.manager.RunningGames.Where(x => x.GameInformation.GameID == gameID).FirstOrDefault().GameInformation;
+            var game = this.manager.RunningGames.Where(x => x.GameInformation.GameID == gameID).FirstOrDefault();
+            
+            if (game == null)
+            {
+                return null;
+            }
+
+            return game.GameInformation;
         }
 
         public List<PlayerStats> GetRanking(string token)
         {
-            //todo token checken!!
+            if (this.GetClientIDByToken(token) == null)
+            {
+                return null;
+            }
 
             return this.manager.GetRanking(token);
         }
 
         public List<PlayerStats> GetRankingWon(string token)
         {
-            //todo token checken!!
+            if (this.GetClientIDByToken(token) == null)
+            {
+                return null;
+            }
 
             return this.manager.GetRankingWon(token);
         }
 
         public List<History> GetHistory(string token)
         {
-            return this.manager.AllRegisteredPlayers.Where(x => x.ID == this.GetClientIDByToken(token)).First().History;
+            return this.manager.History;
         }
 
         public void Updatedata(List<ClientData> players)

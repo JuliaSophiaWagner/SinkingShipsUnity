@@ -14,7 +14,6 @@ namespace ServerLogic
             this.ID = id;
             this.Token = string.Empty;
             this.GameRequests = new List<Player>();
-            this.History = new List<History>();
         }
 
         public ClientData()
@@ -49,12 +48,6 @@ namespace ServerLogic
         public List<Player> GameRequests
         {
             get; 
-            set;
-        }
-
-        public List<History> History
-        {
-            get;
             set;
         }
 

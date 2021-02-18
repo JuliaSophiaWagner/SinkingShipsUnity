@@ -44,12 +44,6 @@ namespace SinkingShipsServer.Database.Models
             set;
         }
 
-        public List<History> History
-        {
-            get;
-            set;
-        }
-
         public int Won
         {
             get;

@@ -9,6 +9,8 @@ namespace SinkingShipsServer.Database.Models
     {
 
         public int Id { get; set; }
+
+        public string GameID { get; set; }
         public List<GridElement> Fields
         {
             get;

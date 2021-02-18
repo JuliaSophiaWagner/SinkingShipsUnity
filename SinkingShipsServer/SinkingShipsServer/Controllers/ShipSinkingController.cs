@@ -26,28 +26,18 @@ namespace SinkingShipsServer.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<PlayerModel>> GetString()
-        {
-            return Ok(this.service.GetAllPlayers());
-        }
-
-        //[HttpPost]
-        //[Route("RequestGame")]
-        //public ActionResult<bool> RequestGame()
-        //{
-        //    string token = GetToken();
-
-        //    var gameStart = this.service.RequestGame(token);
-
-        //    return gameStart;
-        //}
-
-        [HttpGet]
         [Route("StartBotGame")]
         public ActionResult<GameInformation> StartBotGame()
         {
             string token = GetToken();
-            return this.service.StartBotGame(token);
+            var game = this.service.StartBotGame(token);
+
+            if (token == null || token == string.Empty || game == null)
+            {
+                return BadRequest(400);
+            }
+
+            return game;
         }
 
         [HttpPost]
@@ -55,7 +45,12 @@ namespace SinkingShipsServer.Controllers
         public ActionResult<bool> GameRequestSpecificUser([FromBody] ServerLogic.Player id)
         {
             string token = GetToken();
-            this.service.SaveGameRequest(token, id);
+            
+            if (token == null || token == string.Empty || this.service.SaveGameRequest(token, id))
+            {
+                return BadRequest(400);
+            }
+                        
             return Ok(200);
         }
 
@@ -64,9 +59,14 @@ namespace SinkingShipsServer.Controllers
         public ActionResult<GameInformation> StartGame([FromBody] ServerLogic.Player player)
         {
             string token = GetToken(); //token == der der angenommen hat
-
             GameInformation gameInfo = this.service.StartGame(player, token);
-            return gameInfo;
+
+            if (token == null || token == string.Empty || gameInfo == null)
+            {
+                return BadRequest(400);
+            }
+
+            return Ok(gameInfo);
         }
 
         [HttpPost]
@@ -75,28 +75,27 @@ namespace SinkingShipsServer.Controllers
         {
             string token = GetToken();
 
-            this.service.SetGameField(gameField, token);
+            if (token == null || token == string.Empty || this.service.SetGameField(gameField, token))
+            {
+                return BadRequest(400);
+            }
+
             return Ok(200);
         }
-
-        [HttpPost]
-        [Route("PauseGame")]
-        public ActionResult PauseGame([FromBody] PlayerCredentials credentials)
-        {
-            string token = GetToken(); //TODO Token
-
-            this.service.PauseGame(credentials, token);
-            return Ok(200);
-        }
-
 
         [HttpPost]
         [Route("GetGameInformation")]
         public ActionResult<GameInformation> SendGameInformation([FromBody] string gameID)
         {
-            string token = GetToken(); //TODO Token
+            string token = GetToken();
+            var gameInfo = this.service.GetGameInfo(gameID, token);
+            
+            if (token == null || token == string.Empty || gameInfo == null)
+            {
+                return BadRequest(400);
+            }
 
-            return this.service.GetGameInfo(gameID, token);
+            return Ok(gameInfo);
         }
 
         [HttpPost]
@@ -104,6 +103,12 @@ namespace SinkingShipsServer.Controllers
         public ActionResult<GameData> SendLastShot([FromBody] GameInformation info)
         {
             string token = GetToken();
+
+            if (token == null || token == string.Empty)
+            {
+                return BadRequest(400);
+            }
+
             return this.service.GetGameData(token, info);
         }
 
@@ -112,7 +117,14 @@ namespace SinkingShipsServer.Controllers
         public ActionResult<string> SendPlayerID()
         {
             string token = GetToken();
-            return this.service.GetAllPlayers().Where(x => x.Token == token).FirstOrDefault().ID;
+            var players = this.service.GetAllPlayers().Where(x => x.Token == token).FirstOrDefault();
+
+            if (token == null || token == string.Empty || players == null)
+            {
+                return BadRequest(400);
+            }
+
+            return players.ID;
         }
 
         [HttpGet]
@@ -120,7 +132,14 @@ namespace SinkingShipsServer.Controllers
         public ActionResult<List<GameInformation>> SendAllRunningGames()
         {
             string token = GetToken();
-            return this.service.GetAllRunningGames(token);
+            var games = this.service.GetAllRunningGames(token);
+
+            if (token == null || token == string.Empty || games == null)
+            {
+                return BadRequest(400);
+            }
+
+            return games;
         }
 
         [HttpGet]
@@ -128,6 +147,12 @@ namespace SinkingShipsServer.Controllers
         public ActionResult<List<GameParts.History>> SendHistory()
         {
             string token = GetToken();
+
+            if (token == null || token == string.Empty)
+            {
+                return BadRequest(400);
+            }
+
             return this.service.GetHistory(token);
         }
 
@@ -136,6 +161,12 @@ namespace SinkingShipsServer.Controllers
         public ActionResult<List<ServerLogic.Player>> SendAllGameRequestsFromClient()
         {
             string token = GetToken();
+
+            if (token == null || token == string.Empty)
+            {
+                return BadRequest(400);
+            }
+
             return this.service.GetAllGameRequests(token);
         }
 
@@ -145,6 +176,12 @@ namespace SinkingShipsServer.Controllers
         {
             List<ServerLogic.Player> players = new List<ServerLogic.Player>();
             string token = GetToken();
+
+            if (token == null || token == string.Empty)
+            {
+                return BadRequest(400);
+            }
+
             foreach (var item in this.service.GetAllLoggedInPlayers())
             {
                 if (item.Token == token)
@@ -200,9 +237,13 @@ namespace SinkingShipsServer.Controllers
         {
             string token = GetToken();
 
+            if (token == null || token == string.Empty)
+            {
+                return BadRequest(400);
+            }
             //if (this.service.GetPlayerbyId(token))
             //{
-                if (this.service.SetGameShot(shot, token))
+            if (this.service.SetGameShot(shot, token))
                 {
                     return Ok(200); //When shot was executed correctly 
                 }
@@ -219,12 +260,6 @@ namespace SinkingShipsServer.Controllers
             ServerLogic.ClientData player = this.service.RegisterPlayer(credentials);
             if (player != null)
             {
-                //this.rep.AddPlayer(new PlayerModel()
-                //{
-                //    PlayerId = player.ID.ToString(),
-                //    Name = player.Name,
-                //    Passwort = player.Password
-                //});
                 this.rep.RegisterPlayer(player);
                 return player.ID;
             }
@@ -238,6 +273,11 @@ namespace SinkingShipsServer.Controllers
         {
             string token = GetToken();
 
+            if (token == null || token == string.Empty)
+            {
+                return BadRequest(400);
+            }
+            
             return this.service.GetRanking(token);
         }
 
@@ -247,7 +287,12 @@ namespace SinkingShipsServer.Controllers
         {
             string token = GetToken();
 
-            return this.service.GetRankingWon(token);
+            if (token == null || token == string.Empty)
+            {
+                return BadRequest(400);
+            }
+
+            return Ok(this.service.GetRankingWon(token));
         }
 
         private void UpdateData()

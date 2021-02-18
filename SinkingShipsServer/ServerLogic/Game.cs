@@ -224,16 +224,6 @@ namespace ServerLogic
             return player.HasWon;
         }
 
-        public void PauseGame()
-        {
-            this.IsGameRunning = false;
-        }
-
-        public void ResumeGame()
-        {
-            this.IsGameRunning = false;
-        }
-
         public GameData GetGameData(string id)
         {
             GamePlayer firstPlayer = this.players.Where(x => x.User.ID != id).FirstOrDefault();

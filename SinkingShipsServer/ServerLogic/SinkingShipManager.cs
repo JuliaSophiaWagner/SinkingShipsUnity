@@ -14,17 +14,26 @@ namespace ServerLogic
             this.AllRegisteredPlayers = new List<ClientData>();
             this.LoggedPlayers = new List<ClientData>();
             this.RunningGames = new List<Game>();
+            this.History = new List<History>();
         }
 
         public List<ClientData> AllRegisteredPlayers { get; set; }
         public List<ClientData> LoggedPlayers { get; private set; }
         public List<Game> RunningGames { get; private set; }
 
+        public List<History> History { get; private set; }
        
         public bool SetGameShot(PlayerShot shot, string id)
         {
             Game game = this.RunningGames.Where(x => x.GameInformation.GameID == shot.GameID).FirstOrDefault();
+
+            if (game == null)
+            {
+                return false;
+            }
+
             bool valid = game.ExecutePlayerShot(shot, id);
+
             if (valid) //if a ship is hit, adds one point to the score
             {
                 if (shot.IsShip)
@@ -45,7 +54,10 @@ namespace ServerLogic
                 {
                     winner.Won++;
                 }
-                this.AllRegisteredPlayers.Where(x => x.ID == id).First().History.Add(new History(game.Players.First().User.Name + " vs. " + game.Players.Last().User.Name, 10 - game.Players.First().ShipsLeft, 10 - game.Players.Last().ShipsLeft));
+
+                this.History.Where(x => x.GameID == game.GameInformation.GameID).First().FirstPlayerPoints = 10 - game.Players.First().ShipsLeft;
+                this.History.Where(x => x.GameID == game.GameInformation.GameID).First().SecondPlayerPoints = 10 - game.Players.Last().ShipsLeft;
+
                 Thread.Sleep(5000);
                 this.RunningGames.Remove(game);
             }
@@ -61,7 +73,14 @@ namespace ServerLogic
 
         public GameData GetGameData(string id, GameInformation game)
         {
-            return this.RunningGames.Where(x => x.GameInformation.GameID == game.GameID).FirstOrDefault().GetGameData(id);
+            Game gameTemp = this.RunningGames.Where(x => x.GameInformation.GameID == game.GameID).FirstOrDefault();
+
+            if (gameTemp == null)
+            {
+                return null;
+            }
+
+            return gameTemp.GetGameData(id);
         }
 
         public ClientData RegisterPlayer(PlayerCredentials credentials)
@@ -91,6 +110,7 @@ namespace ServerLogic
         public GameInformation StartBotGame(string id)
         {
             Game game = new Game(this.GetPlayer(id), new BotPlayer(Guid.NewGuid().ToString()), true);
+            this.History.Add(new History(game.Players.First().User.Name + " vs. " + game.Players.Last().User.Name, 0, 0, game.GameInformation.GameID));
             game.Start();
             this.RunningGames.Add(game);
             return game.GameInformation;
@@ -109,6 +129,11 @@ namespace ServerLogic
 
         public GameInformation StartGame(Player player, string iDplayerTwo)
         {
+            if (player == null || this.GetPlayer(iDplayerTwo) == null)
+            {
+                return null;
+            }
+
             Game game = new Game(this.GetPlayer(player.ID), this.GetPlayer(iDplayerTwo));
             this.RunningGames.Add(game);
             var playerTemp = this.AllRegisteredPlayers.Where(x => x.ID == iDplayerTwo).FirstOrDefault();
@@ -118,6 +143,7 @@ namespace ServerLogic
                 playerTemp.GameRequests.Remove(playerTemp.GameRequests.Where(x => x.ID == player.ID).FirstOrDefault());
             }
 
+            this.History.Add(new History(game.Players.First().User.Name + " vs. " + game.Players.Last().User.Name, 0, 0, game.GameInformation.GameID));
             game.Start();
             return game.GameInformation;
         }
@@ -130,26 +156,6 @@ namespace ServerLogic
             }
 
             return this.AllRegisteredPlayers.Where(x => x.ID == id).FirstOrDefault().GameRequests;
-        }
-
-        public void PauseGame(PlayerCredentials credentials, string token)
-        {
-            ClientData player = this.AllRegisteredPlayers.Where(x => x.Name == credentials.Name && x.Password == credentials.Password).FirstOrDefault();
-            
-            for (int i = 0; i < RunningGames.Count; i++)
-            {
-                List<GamePlayer> players = RunningGames[i].Players;
-
-                for (int t = 0; t < players.Count; t++)
-                {
-                    if (players[t].User.Token == token) //is it really the same token?
-                    {
-                        RunningGames[i].PauseGame();
-                    }
-
-                    //TODO save game in database
-                }
-            }
         }
 
         public List<PlayerStats> GetRanking(string token)
