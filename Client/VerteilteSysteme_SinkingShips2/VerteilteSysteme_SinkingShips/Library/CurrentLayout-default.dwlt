@@ -48,7 +48,11 @@ MonoBehaviour:
   m_MinSize: {x: 679, y: 342}
   m_MaxSize: {x: 12004, y: 8042}
   vertical: 0
+<<<<<<< HEAD
   controlID: 112
+=======
+  controlID: 35
+>>>>>>> 47c039c2935bb3765764f5bfce6763187269cfca
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -226,7 +230,11 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 342}
   m_MaxSize: {x: 8003, y: 8042}
   vertical: 1
+<<<<<<< HEAD
   controlID: 113
+=======
+  controlID: 36
+>>>>>>> 47c039c2935bb3765764f5bfce6763187269cfca
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -251,7 +259,11 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 221}
   m_MaxSize: {x: 8003, y: 4021}
   vertical: 0
+<<<<<<< HEAD
   controlID: 114
+=======
+  controlID: 37
+>>>>>>> 47c039c2935bb3765764f5bfce6763187269cfca
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -355,9 +367,15 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 30}
+<<<<<<< HEAD
     m_SelectedIDs: be520000
     m_LastClickedID: 21182
     m_ExpandedIDs: 000000009c5200009e520000a0520000a2520000a452000000ca9a3b
+=======
+    m_SelectedIDs: 60440000
+    m_LastClickedID: 17504
+    m_ExpandedIDs: 0000000046440000484400004a4400004c4400004e44000000ca9a3b
+>>>>>>> 47c039c2935bb3765764f5bfce6763187269cfca
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -385,7 +403,11 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
+<<<<<<< HEAD
     m_ExpandedIDs: 000000009c5200009e520000a0520000a2520000a4520000
+=======
+    m_ExpandedIDs: 0000000046440000484400004a4400004c4400004e440000
+>>>>>>> 47c039c2935bb3765764f5bfce6763187269cfca
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -412,7 +434,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -509,7 +531,11 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
+<<<<<<< HEAD
       m_ExpandedIDs: 50e0ffff
+=======
+      m_ExpandedIDs: 5afbffff
+>>>>>>> 47c039c2935bb3765764f5bfce6763187269cfca
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
