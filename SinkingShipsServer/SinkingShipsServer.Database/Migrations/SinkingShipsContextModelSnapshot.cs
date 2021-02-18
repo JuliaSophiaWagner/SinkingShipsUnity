@@ -49,32 +49,6 @@ namespace SinkingShipsServer.Database.Migrations
                     b.ToTable("AllRegisteredPlayers");
                 });
 
-            modelBuilder.Entity("SinkingShipsServer.Database.Models.History", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<int?>("ClientDataPrimaryKey")
-                        .HasColumnType("int");
-
-                    b.Property<int>("FirstPlayerPoints")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("SecondPlayerPoints")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ClientDataPrimaryKey");
-
-                    b.ToTable("History");
-                });
-
             modelBuilder.Entity("SinkingShipsServer.Database.Models.Player", b =>
                 {
                     b.Property<int>("PrimaryKey")
@@ -101,13 +75,6 @@ namespace SinkingShipsServer.Database.Migrations
                     b.ToTable("Player");
                 });
 
-            modelBuilder.Entity("SinkingShipsServer.Database.Models.History", b =>
-                {
-                    b.HasOne("SinkingShipsServer.Database.Models.ClientData", null)
-                        .WithMany("History")
-                        .HasForeignKey("ClientDataPrimaryKey");
-                });
-
             modelBuilder.Entity("SinkingShipsServer.Database.Models.Player", b =>
                 {
                     b.HasOne("SinkingShipsServer.Database.Models.ClientData", null)
@@ -118,8 +85,6 @@ namespace SinkingShipsServer.Database.Migrations
             modelBuilder.Entity("SinkingShipsServer.Database.Models.ClientData", b =>
                 {
                     b.Navigation("GameRequests");
-
-                    b.Navigation("History");
                 });
 #pragma warning restore 612, 618
         }
