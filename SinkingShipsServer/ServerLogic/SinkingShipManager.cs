@@ -47,6 +47,9 @@ namespace ServerLogic
                 game.BotMove();
             }
 
+            this.History.Where(x => x.GameID == game.GameInformation.GameID).First().FirstPlayerPoints = 10 - game.Players.First().ShipsLeft;
+            this.History.Where(x => x.GameID == game.GameInformation.GameID).First().SecondPlayerPoints = 10 - game.Players.Last().ShipsLeft;
+
             if (game.GameOver)
             {
                 var winner = this.AllRegisteredPlayers.Where(y => y.ID == game.Players.Where(x => x.HasWon).First().User.ID).First();
@@ -54,9 +57,6 @@ namespace ServerLogic
                 {
                     winner.Won++;
                 }
-
-                this.History.Where(x => x.GameID == game.GameInformation.GameID).First().FirstPlayerPoints = 10 - game.Players.First().ShipsLeft;
-                this.History.Where(x => x.GameID == game.GameInformation.GameID).First().SecondPlayerPoints = 10 - game.Players.Last().ShipsLeft;
 
                 Thread.Sleep(5000);
                 this.RunningGames.Remove(game);
