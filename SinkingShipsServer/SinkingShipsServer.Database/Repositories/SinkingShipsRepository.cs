@@ -177,13 +177,14 @@ namespace SinkingShipsServer.Database.Repositories
 
         public void UpdateHistory(List<ServerLogic.GameParts.History> getHistory)
         {
-            foreach (var item in getHistory)
-            {
-                var temp = this.dbContext.History.Where(x => x.GameID == item.GameID).First();
-                this.dbContext.History.Update(temp);
-            }
-
-            this.dbContext.SaveChanges();
+            this.dbContext.History.RemoveRange(this.dbContext.History);
+            //foreach (var item in getHistory)
+            //{
+            //    var temp = this.dbContext.History.Where(x => x.GameID == item.GameID).First();
+            //    this.dbContext.History.Update(temp);
+            //    //this.dbContext.History.Where(x => x.GameID == item.GameID).a                
+            //}
+            this.AddHistory(getHistory);
         }
     } 
 }

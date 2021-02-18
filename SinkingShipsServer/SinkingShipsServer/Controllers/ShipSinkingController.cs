@@ -29,14 +29,18 @@ namespace SinkingShipsServer.Controllers
         [Route("StartBotGame")]
         public ActionResult<GameInformation> StartBotGame()
         {
+            this.UpdateData();
             string token = GetToken();
             var game = this.service.StartBotGame(token);
+            this.rep.SetAllRegisteredPlayer(this.service.GetRegisteredPlayer());
 
             if (token == null || token == string.Empty || game == null)
             {
                 return BadRequest(400);
             }
 
+            this.rep.AddHistory(this.service.GetHistory());
+            this.rep.SetAllRegisteredPlayer(this.service.GetRegisteredPlayer());
             return game;
         }
 

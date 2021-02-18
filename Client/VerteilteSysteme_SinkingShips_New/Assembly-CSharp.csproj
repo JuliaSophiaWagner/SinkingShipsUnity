@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{D9FB5A1C-B5AA-3433-55E3-30DEE25E61CE}</ProjectGuid>
+    <ProjectGuid>{D3F3CC4A-68AA-DE33-FE07-A4CD3EC5B382}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\GameData.cs" />
     <Compile Include="Assets\Scripts\Levelloader.cs" />
     <Compile Include="Assets\Scripts\GameField.cs" />
+    <Compile Include="Assets\Scripts\History.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\UserData.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
@@ -78,7 +79,6 @@
     <Compile Include="Assets\Scripts\PlayerStats.cs" />
     <Compile Include="Assets\Scripts\DragAndDrop.cs" />
     <Compile Include="Assets\Scripts\PlayerShot.cs" />
-    <Compile Include="Assets\Scripts\History.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

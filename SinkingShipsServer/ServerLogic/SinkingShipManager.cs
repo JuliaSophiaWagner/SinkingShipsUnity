@@ -110,6 +110,7 @@ namespace ServerLogic
         public GameInformation StartBotGame(string id)
         {
             Game game = new Game(this.GetPlayer(id), new BotPlayer(Guid.NewGuid().ToString()), true);
+            this.AllRegisteredPlayers.Add(game.Players.Last().User);
             this.History.Add(new History(game.Players.First().User.Name + " vs. " + game.Players.Last().User.Name, 0, 0, game.GameInformation.GameID));
             game.Start();
             this.RunningGames.Add(game);

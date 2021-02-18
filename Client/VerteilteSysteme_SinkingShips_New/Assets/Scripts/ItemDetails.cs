@@ -130,7 +130,6 @@ public class ItemDetails : MonoBehaviour
             GameObject item = Instantiate(prefab);
             item.transform.SetParent(transform);
             item.transform.Find("Name").GetComponent<TextMeshProUGUI>().SetText(this.RunningGames.ElementAt(i).FirstPlayer.Name + " vs. " + this.RunningGames.ElementAt(i).SecondPlayer.Name);
-            item.transform.Find("Points").GetComponent<TextMeshProUGUI>().SetText(this.RunningGames.ElementAt(i).Points.ToString());
             item.transform.Find("ID").GetComponent<TextMeshProUGUI>().SetText(this.RunningGames.ElementAt(i).GameID);
             item.SetActive(true);
         }

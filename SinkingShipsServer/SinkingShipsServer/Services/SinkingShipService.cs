@@ -171,7 +171,14 @@ namespace SinkingShipsServer.Services
 
             foreach (var item in registeredplayer)
             {
-                this.manager.AllRegisteredPlayers.Where(x => x.ID == item.ID).First().GameRequests = item.GameRequests;
+                try
+                {
+                    this.manager.AllRegisteredPlayers.Where(x => x.ID == item.ID).First().GameRequests = item.GameRequests;
+                }
+                catch 
+                {
+
+                }
             }
 
             this.manager.History = histories;

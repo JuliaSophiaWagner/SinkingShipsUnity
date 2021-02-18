@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
@@ -297,6 +298,7 @@ public class GameManager : MonoBehaviour
     public void StartBotGame()
     {
         Task.Run(async () => await SendStartBotGame());
+        Thread.Sleep(1000);
         this.LoadScene(1);
     }
 
