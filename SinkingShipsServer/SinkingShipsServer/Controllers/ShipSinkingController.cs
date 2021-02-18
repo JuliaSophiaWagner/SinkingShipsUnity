@@ -50,7 +50,8 @@ namespace SinkingShipsServer.Controllers
             {
                 return BadRequest(400);
             }
-                        
+
+            this.UpdateData();
             return Ok(200);
         }
 
@@ -58,7 +59,7 @@ namespace SinkingShipsServer.Controllers
         [Route("StartGame")]
         public ActionResult<GameInformation> StartGame([FromBody] ServerLogic.Player player)
         {
-            string token = GetToken(); //token == der der angenommen hat
+            string token = GetToken(); 
             GameInformation gameInfo = this.service.StartGame(player, token);
 
             if (token == null || token == string.Empty || gameInfo == null)
@@ -241,13 +242,12 @@ namespace SinkingShipsServer.Controllers
             {
                 return BadRequest(400);
             }
-            //if (this.service.GetPlayerbyId(token))
-            //{
+
             if (this.service.SetGameShot(shot, token))
-                {
-                    return Ok(200); //When shot was executed correctly 
-                }
-            //}
+            {
+                return Ok(200); //When shot was executed correctly 
+            }
+
 
             return BadRequest(400);
         }

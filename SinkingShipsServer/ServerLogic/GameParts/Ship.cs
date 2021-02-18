@@ -17,7 +17,7 @@ namespace ServerLogic.GameParts
         {
             this.Fields = new List<GridElement>();
         }
-        public int Size { get; }
+        public int Size { get; set; }
 
         public int CountShot { get; set; }
 

@@ -140,6 +140,7 @@ namespace ServerLogic.GameParts
             else if (this.ShotsMade.Last().IsShip && ShipSunk)
             {
                 this.shotShips.Last().Fields.Add(new GridElement(this.ShotsMade.Last().XCoordinate, this.ShotsMade.Last().YCoordinate, true));
+                this.shotShips.Last().Size = this.shotShips.Last().Fields.Count;
                 this.shotShips.Last().Fields = new ShipManager().CreateTempFields(this.shotShips.Last());
             }
 
@@ -173,7 +174,7 @@ namespace ServerLogic.GameParts
                 return false;
             }
 
-            if (this.shotShips.Last().Fields.First().XCoordinate == this.shotShips.Last().Fields.First().XCoordinate)
+            if (this.shotShips.Last().Fields.First().XCoordinate == this.shotShips.Last().Fields.Last().XCoordinate)
             {
                 return false;
             }
@@ -207,8 +208,8 @@ namespace ServerLogic.GameParts
             }
             else
             {
-                x = this.shotShips.Last().Fields.Last().XCoordinate;
-                y = this.shotShips.Last().Fields.Last().YCoordinate;
+                x = this.shotShips.Last().Fields.First().XCoordinate;
+                y = this.shotShips.Last().Fields.First().YCoordinate;
             }
 
             PlayerShot shotTemp = new PlayerShot(this.PlayerID, this.GameID, x, y, false);
@@ -225,7 +226,7 @@ namespace ServerLogic.GameParts
 
                 if (triedLeft)
                 {
-                    x = this.shotShips.Last().Fields.Last().XCoordinate + 1;
+                    x = this.shotShips.Last().Fields.First().XCoordinate + 1;
                     triedRight = true;
                 }
 
@@ -244,8 +245,8 @@ namespace ServerLogic.GameParts
                 }
                 else
                 {
-                    x = this.shotShips.Last().Fields.Last().XCoordinate;
-                    y = this.shotShips.Last().Fields.Last().YCoordinate - 1;
+                    x = this.shotShips.Last().Fields.First().XCoordinate;
+                    y = this.shotShips.Last().Fields.First().YCoordinate - 1;
                 }
 
                 if (!CheckIfMoveExist(x, y))
@@ -271,6 +272,7 @@ namespace ServerLogic.GameParts
             if (CheckIfMoveExist(x, y))
             {
                 shotTemp = GetRandomShot();
+                this.ResetConditions();
             }
 
             return shotTemp;

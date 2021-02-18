@@ -101,7 +101,7 @@ namespace SinkingShipsServer.Services
             var player = this.GetClientIDByToken(token);
             this.manager.SaveGameRequest(this.GetClientIDByToken(token), clientToAsk);
 
-            return player != null;
+            return player == null;
         }
 
         public GameField GetRunningGameData(string token, string gameID)
@@ -161,7 +161,7 @@ namespace SinkingShipsServer.Services
 
         public void Updatedata(List<ClientData> players)
         {
-            this.manager.AllRegisteredPlayers = players;
+            //this.manager.AllRegisteredPlayers = players;
         }
     }
 }
