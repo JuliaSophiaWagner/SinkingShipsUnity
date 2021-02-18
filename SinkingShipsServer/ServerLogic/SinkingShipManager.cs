@@ -16,7 +16,7 @@ namespace ServerLogic
             this.RunningGames = new List<Game>();
         }
 
-        public List<ClientData> AllRegisteredPlayers { get; private set; }
+        public List<ClientData> AllRegisteredPlayers { get; set; }
         public List<ClientData> LoggedPlayers { get; private set; }
         public List<Game> RunningGames { get; private set; }
 

@@ -2,7 +2,6 @@
 using ServerLogic;
 using ServerLogic.GameParts;
 using ServerLogic.Login;
-using SinkingShipsServer.Database.Models;
 using SinkingShipsServer.Database.Repositories;
 using System;
 using System.Collections.Generic;
@@ -20,12 +19,12 @@ namespace SinkingShipsServer.Services
             this.manager = new SinkingShipManager();
         }
 
-        public List<ClientData> GetAllPlayers()
+        public List<ServerLogic.ClientData> GetAllPlayers()
         {
             return this.manager.AllRegisteredPlayers;
         }
 
-        public List<ClientData> GetAllLoggedInPlayers()
+        public List<ServerLogic.ClientData> GetAllLoggedInPlayers()
         {
             return this.manager.LoggedPlayers;
         }
@@ -40,7 +39,7 @@ namespace SinkingShipsServer.Services
             return this.manager.LoginPlayer(player, token);
         }
 
-        public ClientData RegisterPlayer(PlayerCredentials player)
+        public ServerLogic.ClientData RegisterPlayer(PlayerCredentials player)
         {
             if (this.manager.AllRegisteredPlayers.Any(client => client.Name == player.Name) || player.Name == string.Empty || player.Name == null || player.Password == string.Empty || player.Password == null)
             {
@@ -100,7 +99,7 @@ namespace SinkingShipsServer.Services
 
         private string GetClientIDByToken(string token)
         {
-            ClientData player = this.manager.LoggedPlayers.Find(x => x.Token == token);
+            ServerLogic.ClientData player = this.manager.LoggedPlayers.Find(x => x.Token == token);
             if (player== null)
             {
                 return string.Empty;
@@ -159,6 +158,11 @@ namespace SinkingShipsServer.Services
         public List<History> GetHistory(string token)
         {
             return this.manager.AllRegisteredPlayers.Where(x => x.ID == this.GetClientIDByToken(token)).First().History;
+        }
+
+        public void Updatedata(List<ClientData> players)
+        {
+            this.manager.AllRegisteredPlayers = players;
         }
     }
 }

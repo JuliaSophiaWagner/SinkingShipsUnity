@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace SinkingShipsServer.Database.Models
 {
     public class Player
     {
-        public int Id
+        [Key]
+        public int PrimaryKey
         {
             get;
             set;

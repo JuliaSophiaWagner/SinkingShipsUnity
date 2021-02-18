@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace SinkingShipsServer.Database.Models
 {
-    public class Clientdata
+    public class ClientData
     {
-        public int Id
+        [Key]
+        public int PrimaryKey
         {
             get;
             set;
@@ -21,19 +23,19 @@ namespace SinkingShipsServer.Database.Models
         public string ID
         {
             get;
-            private set;
+            set;
         }
 
         public string Name
         {
             get;
-            private set;
+            set;
         }
 
         public string Password
         {
             get;
-            private set;
+            set;
         }
 
         public List<Player> GameRequests

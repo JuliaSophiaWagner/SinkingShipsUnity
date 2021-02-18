@@ -2,7 +2,6 @@
 using ServerLogic;
 using ServerLogic.GameParts;
 using ServerLogic.Login;
-using SinkingShipsServer.Database.Models;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -10,6 +9,7 @@ namespace SinkingShipsServer.Services
 {
     public interface ISinkingShipsService
     {
+        void Updatedata(List<ClientData> players);
         bool LoginPlayer(PlayerCredentials player, string token);
         ClientData RegisterPlayer(PlayerCredentials player);
         void SetGameField(GameField gameField, string token);

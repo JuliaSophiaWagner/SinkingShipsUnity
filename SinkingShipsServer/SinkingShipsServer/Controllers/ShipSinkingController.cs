@@ -8,6 +8,7 @@ using SinkingShipsServer.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using GameParts = ServerLogic.GameParts;
 
 namespace SinkingShipsServer.Controllers
 {
@@ -51,7 +52,7 @@ namespace SinkingShipsServer.Controllers
 
         [HttpPost]
         [Route("GameRequestSpecificUser")]
-        public ActionResult<bool> GameRequestSpecificUser([FromBody] Player id)
+        public ActionResult<bool> GameRequestSpecificUser([FromBody] ServerLogic.Player id)
         {
             string token = GetToken();
             this.service.SaveGameRequest(token, id);
@@ -60,7 +61,7 @@ namespace SinkingShipsServer.Controllers
 
         [HttpPost]
         [Route("StartGame")]
-        public ActionResult<GameInformation> StartGame([FromBody] Player player)
+        public ActionResult<GameInformation> StartGame([FromBody] ServerLogic.Player player)
         {
             string token = GetToken(); //token == der der angenommen hat
 
@@ -124,7 +125,7 @@ namespace SinkingShipsServer.Controllers
 
         [HttpGet]
         [Route("GetHistory")]
-        public ActionResult<List<History>> SendHistory()
+        public ActionResult<List<GameParts.History>> SendHistory()
         {
             string token = GetToken();
             return this.service.GetHistory(token);
@@ -132,7 +133,7 @@ namespace SinkingShipsServer.Controllers
 
         [HttpGet]
         [Route("GetAllGameRequests")]
-        public ActionResult<List<Player>> SendAllGameRequestsFromClient()
+        public ActionResult<List<ServerLogic.Player>> SendAllGameRequestsFromClient()
         {
             string token = GetToken();
             return this.service.GetAllGameRequests(token);
@@ -140,9 +141,9 @@ namespace SinkingShipsServer.Controllers
 
         [HttpGet]
         [Route("GetAllOnlinePlayers")]
-        public ActionResult<List<Player>> SendAllLoginPlayers()
+        public ActionResult<List<ServerLogic.Player>> SendAllLoginPlayers()
         {
-            List<Player> players = new List<ServerLogic.Player>();
+            List<ServerLogic.Player> players = new List<ServerLogic.Player>();
             string token = GetToken();
             foreach (var item in this.service.GetAllLoggedInPlayers())
             {
@@ -151,7 +152,7 @@ namespace SinkingShipsServer.Controllers
                     continue;
                 }
 
-                players.Add(new Player(item.Name, item.Token, item.ID));
+                players.Add(new ServerLogic.Player(item.Name, item.Token, item.ID));
             }
 
             return players;
@@ -181,9 +182,10 @@ namespace SinkingShipsServer.Controllers
         [Route("Login")]
         public ActionResult<string> LoginPlayer([FromBody] PlayerCredentials credentials)
         {
+            this.UpdateData();
             string token = Guid.NewGuid().ToString();
 
-            if (this.service.LoginPlayer(credentials, token) /*&& this.rep.CheckIfPlayerExist(credentials.Name, credentials.Password)*/)
+            if (this.service.LoginPlayer(credentials, token) && this.rep.CheckIfPlayerExist(credentials.Name, credentials.Password))
             {
                 return token;
             }
@@ -213,7 +215,8 @@ namespace SinkingShipsServer.Controllers
         [Route("Register")]
         public ActionResult<string> RegisterPlayer([FromBody] PlayerCredentials credentials)
         {
-            ClientData player = this.service.RegisterPlayer(credentials);
+            this.UpdateData();
+            ServerLogic.ClientData player = this.service.RegisterPlayer(credentials);
             if (player != null)
             {
                 //this.rep.AddPlayer(new PlayerModel()
@@ -222,7 +225,7 @@ namespace SinkingShipsServer.Controllers
                 //    Name = player.Name,
                 //    Passwort = player.Password
                 //});
-
+                this.rep.RegisterPlayer(player);
                 return player.ID;
             }
 
@@ -245,6 +248,11 @@ namespace SinkingShipsServer.Controllers
             string token = GetToken();
 
             return this.service.GetRankingWon(token);
+        }
+
+        private void UpdateData()
+        {
+           this.service.Updatedata(this.rep.GetAllRegisteredPlayers());
         }
     }
 }
