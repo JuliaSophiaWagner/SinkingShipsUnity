@@ -21,7 +21,7 @@ namespace ServerLogic
         public List<ClientData> LoggedPlayers { get; private set; }
         public List<Game> RunningGames { get; private set; }
 
-        public List<History> History { get; private set; }
+        public List<History> History { get; set; }
        
         public bool SetGameShot(PlayerShot shot, string id)
         {
@@ -155,6 +155,8 @@ namespace ServerLogic
                 return null;
             }
 
+            var temp = this.AllRegisteredPlayers.Where(x => x.ID == id).FirstOrDefault().GameRequests;
+
             return this.AllRegisteredPlayers.Where(x => x.ID == id).FirstOrDefault().GameRequests;
         }
 
@@ -200,6 +202,8 @@ namespace ServerLogic
             {
                 return false; 
             }
+
+            this.AllRegisteredPlayers.Where(x => x.Name == credentials.Name && x.Password == credentials.Password).FirstOrDefault().Token = token;
 
             if (this.LoggedPlayers.Where(x => x.Name == credentials.Name && x.Password == credentials.Password).FirstOrDefault() != null)
             {

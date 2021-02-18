@@ -10,8 +10,8 @@ using SinkingShipsServer.Database;
 namespace SinkingShipsServer.Database.Migrations
 {
     [DbContext(typeof(SinkingShipsContext))]
-    [Migration("20210218135359_1")]
-    partial class _1
+    [Migration("20210218173106_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -51,6 +51,30 @@ namespace SinkingShipsServer.Database.Migrations
                     b.ToTable("AllRegisteredPlayers");
                 });
 
+            modelBuilder.Entity("SinkingShipsServer.Database.Models.History", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int>("FirstPlayerPoints")
+                        .HasColumnType("int");
+
+                    b.Property<string>("GameID")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SecondPlayerPoints")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("History");
+                });
+
             modelBuilder.Entity("SinkingShipsServer.Database.Models.Player", b =>
                 {
                     b.Property<int>("PrimaryKey")
@@ -74,7 +98,7 @@ namespace SinkingShipsServer.Database.Migrations
 
                     b.HasIndex("ClientDataPrimaryKey");
 
-                    b.ToTable("Player");
+                    b.ToTable("GameRequests");
                 });
 
             modelBuilder.Entity("SinkingShipsServer.Database.Models.Player", b =>

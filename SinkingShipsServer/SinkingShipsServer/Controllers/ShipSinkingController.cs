@@ -51,6 +51,7 @@ namespace SinkingShipsServer.Controllers
                 return BadRequest(400);
             }
 
+            this.rep.SetAllRegisteredPlayer(this.service.GetRegisteredPlayer());
             this.UpdateData();
             return Ok(200);
         }
@@ -67,6 +68,9 @@ namespace SinkingShipsServer.Controllers
                 return BadRequest(400);
             }
 
+            this.rep.AddHistory(this.service.GetHistory());
+            this.rep.SetAllRegisteredPlayer(this.service.GetRegisteredPlayer());
+            this.UpdateData();
             return Ok(gameInfo);
         }
 
@@ -153,8 +157,8 @@ namespace SinkingShipsServer.Controllers
             {
                 return BadRequest(400);
             }
-
-            return this.service.GetHistory(token);
+            this.UpdateData();
+            return this.service.GetHistory(token); 
         }
 
         [HttpGet]
@@ -223,8 +227,10 @@ namespace SinkingShipsServer.Controllers
             this.UpdateData();
             string token = Guid.NewGuid().ToString();
 
-            if (this.service.LoginPlayer(credentials, token) && this.rep.CheckIfPlayerExist(credentials.Name, credentials.Password))
+            if (this.service.LoginPlayer(credentials, token) && this.rep.CheckIfPlayerExist(credentials.Name, credentials.Password, token))
             {
+                this.rep.SetAllRegisteredPlayer(this.service.GetAllPlayers());
+                this.UpdateData();
                 return token;
             }
 
@@ -243,8 +249,11 @@ namespace SinkingShipsServer.Controllers
                 return BadRequest(400);
             }
 
+
             if (this.service.SetGameShot(shot, token))
             {
+                this.rep.UpdateHistory(this.service.GetHistory());
+                this.UpdateData();
                 return Ok(200); //When shot was executed correctly 
             }
 
@@ -297,7 +306,7 @@ namespace SinkingShipsServer.Controllers
 
         private void UpdateData()
         {
-           this.service.Updatedata(this.rep.GetAllRegisteredPlayers());
+           this.service.Updatedata(this.rep.GetAllRegisteredPlayers(), this.rep.GetAllHistory());
         }
     }
 }

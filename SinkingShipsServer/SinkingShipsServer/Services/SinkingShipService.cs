@@ -159,9 +159,27 @@ namespace SinkingShipsServer.Services
             return this.manager.History;
         }
 
-        public void Updatedata(List<ClientData> players)
+        public List<History> GetHistory()
         {
-            //this.manager.AllRegisteredPlayers = players;
+            return this.manager.History;
+        }
+
+        public void Updatedata(List<ClientData> players, List<History> histories)
+        {
+            var registeredplayer = this.manager.AllRegisteredPlayers;
+            this.manager.AllRegisteredPlayers = players;
+
+            foreach (var item in registeredplayer)
+            {
+                this.manager.AllRegisteredPlayers.Where(x => x.ID == item.ID).First().GameRequests = item.GameRequests;
+            }
+
+            this.manager.History = histories;
+        }
+
+        public List<ClientData> GetRegisteredPlayer()
+        {
+            return this.manager.AllRegisteredPlayers;
         }
     }
 }

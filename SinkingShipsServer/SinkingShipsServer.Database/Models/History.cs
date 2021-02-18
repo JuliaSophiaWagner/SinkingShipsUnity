@@ -16,6 +16,8 @@ namespace SinkingShipsServer.Database.Models
 
         public string Name { get; set; }
 
+        public string GameID { get; set; }
+
         public int FirstPlayerPoints { get; set; }
 
         public int SecondPlayerPoints { get; set; }

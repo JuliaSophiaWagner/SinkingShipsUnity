@@ -9,7 +9,7 @@ namespace SinkingShipsServer.Services
 {
     public interface ISinkingShipsService
     {
-        void Updatedata(List<ClientData> players);
+        void Updatedata(List<ClientData> players, List<History> histories);
         bool LoginPlayer(PlayerCredentials player, string token);
         ClientData RegisterPlayer(PlayerCredentials player);
         bool SetGameField(GameField gameField, string token);
@@ -27,5 +27,7 @@ namespace SinkingShipsServer.Services
         List<PlayerStats> GetRanking(string token);
         List<History> GetHistory(string token);
         List<PlayerStats> GetRankingWon(string token);
+        List<ClientData> GetRegisteredPlayer();
+        List<History> GetHistory();
     }
 }

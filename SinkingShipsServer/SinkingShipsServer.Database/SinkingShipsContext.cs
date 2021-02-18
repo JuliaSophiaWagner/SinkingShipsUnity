@@ -11,5 +11,9 @@ namespace SinkingShipsServer.Database
         }
 
         public DbSet<ClientData> AllRegisteredPlayers { get; set; }
+
+        public DbSet<Player> GameRequests { get; set; }
+
+        public DbSet<History> History { get; private set; }
     }
 }

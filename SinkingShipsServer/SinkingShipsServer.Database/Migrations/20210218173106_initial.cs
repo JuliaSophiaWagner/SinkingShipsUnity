@@ -2,7 +2,7 @@
 
 namespace SinkingShipsServer.Database.Migrations
 {
-    public partial class _1 : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -25,7 +25,23 @@ namespace SinkingShipsServer.Database.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Player",
+                name: "History",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    GameID = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FirstPlayerPoints = table.Column<int>(type: "int", nullable: false),
+                    SecondPlayerPoints = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_History", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "GameRequests",
                 columns: table => new
                 {
                     PrimaryKey = table.Column<int>(type: "int", nullable: false)
@@ -37,9 +53,9 @@ namespace SinkingShipsServer.Database.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Player", x => x.PrimaryKey);
+                    table.PrimaryKey("PK_GameRequests", x => x.PrimaryKey);
                     table.ForeignKey(
-                        name: "FK_Player_AllRegisteredPlayers_ClientDataPrimaryKey",
+                        name: "FK_GameRequests_AllRegisteredPlayers_ClientDataPrimaryKey",
                         column: x => x.ClientDataPrimaryKey,
                         principalTable: "AllRegisteredPlayers",
                         principalColumn: "PrimaryKey",
@@ -47,15 +63,18 @@ namespace SinkingShipsServer.Database.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Player_ClientDataPrimaryKey",
-                table: "Player",
+                name: "IX_GameRequests_ClientDataPrimaryKey",
+                table: "GameRequests",
                 column: "ClientDataPrimaryKey");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Player");
+                name: "GameRequests");
+
+            migrationBuilder.DropTable(
+                name: "History");
 
             migrationBuilder.DropTable(
                 name: "AllRegisteredPlayers");
