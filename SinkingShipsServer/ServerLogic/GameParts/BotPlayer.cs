@@ -144,7 +144,7 @@ namespace ServerLogic.GameParts
                 this.shotShips.Last().Fields = new ShipManager().CreateTempFields(this.shotShips.Last());
             }
 
-            ShipSunk = false;
+            ShipSunk = false; 
             ResetConditions();
             this.ShotsMade.Add(this.GetRandomShot());
         }
@@ -174,7 +174,7 @@ namespace ServerLogic.GameParts
                 return false;
             }
 
-            if (this.shotShips.Last().Fields.First().XCoordinate == this.shotShips.Last().Fields.Last().XCoordinate)
+            if (this.shotShips.Count > 1 && this.shotShips.Last().Fields.First().XCoordinate == this.shotShips.Last().Fields.Last().XCoordinate)
             {
                 return false;
             }
@@ -224,9 +224,14 @@ namespace ServerLogic.GameParts
                     return shotTemp;
                 }
 
-                if (triedLeft)
+                if (triedLeft || !this.ShotsMade.Last().IsShip)
                 {
                     x = this.shotShips.Last().Fields.First().XCoordinate + 1;
+                    triedRight = true;
+                }
+                else if (triedLeft || !this.ShotsMade.Last().IsShip)
+                {
+                    x = this.ShotsMade.Last().XCoordinate + 1;
                     triedRight = true;
                 }
 
@@ -259,11 +264,10 @@ namespace ServerLogic.GameParts
                 {
                     y = this.shotShips.Last().Fields.First().YCoordinate + 1;
                 }
-
-                //if (CheckIfMoveExist(x, y))
-                //{
-                //    y = this.shotShips.Last().Fields.First().YCoordinate + 1;
-                //}
+                else if (CheckIfMoveExist(x, y) || this.ShotsMade.Last().IsShip)
+                {
+                    y = this.ShotsMade.Last().YCoordinate + 1;
+                }
             }
 
             shotTemp.XCoordinate = x;

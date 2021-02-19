@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: No Button
   m_EditorClassIdentifier: 
   colorMode: 3
-  topLeft: {r: 0.1981132, g: 0.021493418, b: 0.021493418, a: 1}
-  topRight: {r: 0.6603774, g: 0.19624422, b: 0.19624422, a: 1}
+  topLeft: {r: 1, g: 0.10849059, b: 0.10849059, a: 1}
+  topRight: {r: 1, g: 1, b: 1, a: 1}
   bottomLeft: {r: 1, g: 0.11792451, b: 0.11792451, a: 1}
   bottomRight: {r: 1, g: 0.033018887, b: 0.033018887, a: 1}
