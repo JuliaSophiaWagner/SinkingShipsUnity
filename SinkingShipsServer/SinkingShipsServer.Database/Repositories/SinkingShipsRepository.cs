@@ -46,6 +46,15 @@ namespace SinkingShipsServer.Database.Repositories
             return true;
         }
 
+        public void UpdatePoints(ServerLogic.ClientData data)
+        {
+            var temp = this.dbContext.AllRegisteredPlayers.Where(x => data.ID == x.ID).First();
+            temp.Points = data.Points;
+            temp.Won = data.Won;
+            this.dbContext.AllRegisteredPlayers.Update(temp);
+            this.dbContext.SaveChanges();
+        }
+
         public List<ServerLogic.GameParts.History> GetAllHistory()
         {
             List<ServerLogic.GameParts.History> temp = new List<ServerLogic.GameParts.History>();
@@ -144,33 +153,6 @@ namespace SinkingShipsServer.Database.Repositories
                     });
                 }
             }
-            //List<ClientData> temp = new List<ClientData>();
-
-            //foreach (var player in lists)
-            //{
-            //    List<Player> requests = new List<Player>();
-
-            //    foreach (var item in player.GameRequests)
-            //    {
-            //        requests.Add(new Player
-            //        {
-            //            Name = item.Name,
-            //            ID = item.ID,
-            //            Token = item.Token
-            //        });
-            //    }
-
-            //    this.dbContext.AllRegisteredPlayers.Add(new ClientData 
-            //    {
-            //        ID = player.ID,
-            //        Name = player.Name,
-            //        Password = player.Password,
-            //        GameRequests = requests,
-            //        Won = player.Won,
-            //        Points = player.Points,
-            //        Token = player.Token
-            //    });
-            //}
 
             this.dbContext.SaveChanges();
         }
@@ -178,12 +160,6 @@ namespace SinkingShipsServer.Database.Repositories
         public void UpdateHistory(List<ServerLogic.GameParts.History> getHistory)
         {
             this.dbContext.History.RemoveRange(this.dbContext.History);
-            //foreach (var item in getHistory)
-            //{
-            //    var temp = this.dbContext.History.Where(x => x.GameID == item.GameID).First();
-            //    this.dbContext.History.Update(temp);
-            //    //this.dbContext.History.Where(x => x.GameID == item.GameID).a                
-            //}
             this.AddHistory(getHistory);
         }
     } 

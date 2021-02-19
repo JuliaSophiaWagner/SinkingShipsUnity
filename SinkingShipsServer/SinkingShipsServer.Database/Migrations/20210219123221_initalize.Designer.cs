@@ -10,7 +10,7 @@ using SinkingShipsServer.Database;
 namespace SinkingShipsServer.Database.Migrations
 {
     [DbContext(typeof(SinkingShipsContext))]
-    [Migration("20210218185727_initalize")]
+    [Migration("20210219123221_initalize")]
     partial class initalize
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

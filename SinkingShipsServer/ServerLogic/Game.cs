@@ -134,7 +134,7 @@ namespace ServerLogic
 
             if (player == null)
             {
-                throw new NullReferenceException("Player id does not exist");
+                return false;
             }
 
             if (!player.PlayerTurn)
@@ -144,14 +144,6 @@ namespace ServerLogic
 
             return this.Shot(shot, player);
         }
-
-        //private PlayerShot BotShot()
-        //{
-        //    Random random = new Random();
-        //    int x = random.Next(0, 10);
-        //    int y = random.Next(0, 10);
-        //    return new PlayerShot(players.Last().User.ID, this.GameInformation.GameID, x, y, false);
-        //}
 
         public void BotMove()
         {
@@ -242,7 +234,6 @@ namespace ServerLogic
                 {
                     name = this.players.Last().User.Name;
                 }
-                //GamePlayer onTurn = this.players.Where(x => x.PlayerTurn == true).FirstOrDefault();
                 message = name + " is on turn.";
 
                 if (firstPlayer.HasWon)

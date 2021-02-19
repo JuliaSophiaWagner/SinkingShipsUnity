@@ -256,6 +256,7 @@ namespace SinkingShipsServer.Controllers
 
             if (this.service.SetGameShot(shot, token))
             {
+                this.rep.UpdatePoints(this.service.GetRegisteredPlayer().Where(x => x.Token == token).FirstOrDefault());
                 this.rep.UpdateHistory(this.service.GetHistory());
                 this.UpdateData();
                 return Ok(200); //When shot was executed correctly 

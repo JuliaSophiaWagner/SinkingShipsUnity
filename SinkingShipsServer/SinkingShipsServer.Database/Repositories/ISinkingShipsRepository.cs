@@ -17,5 +17,6 @@ namespace SinkingShipsServer.Database.Repositories
         void SetAllHistory(List<GameParts.History> histories);
         void AddHistory(List<GameParts.History> getHistory);
         void UpdateHistory(List<GameParts.History> getHistory);
+        void UpdatePoints(ServerLogic.ClientData data);
     }
 }
